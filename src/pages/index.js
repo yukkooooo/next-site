@@ -9,7 +9,7 @@ import Styles from '../styles/index.module.css'
 
 export default function Home() {
   let title = "ヘッダーです"
-  const { data, error } = useSWR('/api/message', fetcher)
+  const { data, error } = useSWR('/api/message')
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 

@@ -7,9 +7,12 @@ import Content from './components/content'
 
 import Styles from '../styles/index.module.css'
 
+
+const fetcher = url => fetch(url).then(res => res.json())
+
 export default function Home() {
   let title = "ヘッダーです"
-  const { data, error } = useSWR('/api/message')
+  const { data, error } = useSWR('/api/message', fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 
@@ -19,7 +22,7 @@ export default function Home() {
         <title>{title}</title>
       </Head>
       <Header title={title} />
-      <p>{data.massage}</p>
+      <p>{data.message}</p>
 
       <p className={Styles.mytitle}>wawawawaaa</p>
       <div>
